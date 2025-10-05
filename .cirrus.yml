@@ -3,13 +3,5 @@ env:
   CIRRUS_CLONE_DEPTH: 1
 
 task:
-  persistent_worker:
-    labels:
-      distro: freebsd
-      jail: freebsd
-  clone_script:
-    - ls
-  debug_script:
-    - echo $CIRRUS_BRANCH
-  test_script:
-    - poudriere --version
+  persistent_worker: {}
+  script: echo "running on-premise"
