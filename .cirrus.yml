@@ -5,6 +5,8 @@ env:
 task:
   only_if: $CIRRUS_PR != ''
   persistent_worker: {}
+  env:
+    PATH: /usr/local/bin:${PATH}
   clone_script: |
     if [ ! -z "$CIRRUS_PR" ]; then
       git clone --depth 1 https://x-access-token:${CIRRUS_REPO_CLONE_TOKEN}@github.com/${CIRRUS_REPO_FULL_NAME}.git $CIRRUS_WORKING_DIR
