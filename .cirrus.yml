@@ -21,9 +21,9 @@ task:
   debug_script:
     - echo $CIRRUS_BRANCH
   test_script:
-    - sudo poudriere ports -c -m null -M ${CIRRUS_WORKING_DIR} -p ${CIRRUS_PR}
-    - sudo poudriere testport -j 143 -p ${CIRRUS_PR} ${CIRRUS_PR_TITLE%%:*}
+    - poudriere ports -c -m null -M ${CIRRUS_WORKING_DIR} -p ${CIRRUS_PR}
+    - poudriere testport -j 143 -p ${CIRRUS_PR} ${CIRRUS_PR_TITLE%%:*}
   always:
     cleanup_script:
-      - sudo poudriere pkgclean -j 143 -p ${CIRRUS_PR} -A -y
-      - yes | sudo poudriere ports -d -k -p ${CIRRUS_PR}
+      - poudriere pkgclean -j 143 -p ${CIRRUS_PR} -A -y
+      - yes | poudriere ports -d -k -p ${CIRRUS_PR}
