@@ -22,6 +22,7 @@ task:
     - echo $CIRRUS_BRANCH
   test_script:
     - poudriere ports -c -m null -M ${CIRRUS_WORKING_DIR} -p ${CIRRUS_PR}
+    - sleep 15
     - poudriere testport -j 143 -p ${CIRRUS_PR} ${CIRRUS_PR_TITLE%%:*}
   always:
     cleanup_script:
